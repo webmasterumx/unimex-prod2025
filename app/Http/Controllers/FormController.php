@@ -465,14 +465,10 @@ class FormController extends Controller
         $nivel  = $request->nivelPosicion;
         $indentificadorEs = $request->identificadorEsp;
 
-       /*  var_dump([
-            $plantel,
-            $nivel,
-            $licenciatura,
-            $indentificadorEs,
-        ]); */
+        $datos = app(FolletoController::class)->leerExcelFolletos($plantel, $nivel, $licenciatura, $indentificadorEs);
 
-        $ruta = app(FolletoController::class)->leerExcelFolletos($plantel, $nivel, $licenciatura, $indentificadorEs);
+        $ruta = $datos["rutaRedireccion"];
+        $carrera = $datos["id_carrera"];
 
         $valores = array(
             "campaingContent" => "",
@@ -482,7 +478,7 @@ class FormController extends Controller
             "folioReferido" => "0",
             "pApMaterno" => "",
             "pApPaterno" => "",
-            "pCarrera" => 0,
+            "pCarrera" => $carrera,
             "pCelular" => $request->celularFolleto,
             "pCorreo" => $request->correoFolleto,
             "pHorario" => 0,
