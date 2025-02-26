@@ -27,7 +27,7 @@ use Spatie\FlareClient\Api;
 */
 
 Route::get('/', [UnimexController::class, 'inicio'])->name('inicio');
-Route::get('/planteles/{slug}', [UnimexController::class, 'getPlanteles'])->name('plantel');
+Route::get('/planteles/{slug}', [UnimexController::class, 'redireccionPlantel'])->name('plantel');
 Route::get('/acerca-de-unimex/{alug}', [UnimexController::class, 'getAcercade'])->name('acercade');
 Route::get('/licenciatura/{slug}', [UnimexController::class, 'getLicenciatura'])->name('licenciatura');
 Route::get('/licenciatura/sua/{slug}', [UnimexController::class, 'getLicenciaturaSua'])->name('licenciatura.sua');
@@ -55,6 +55,12 @@ Route::view("/registro_exitoso", "registroExitoso")->name('registro.exitoso');
 Route::view("/error_de_registro", "errorRegistro")->name("error.registro");
 Route::post('/procesa/datos/folleto', [FormController::class, 'procesarFormularioFolleto'])->name('procesa.datos.folleto');
 Route::post('/procesa/datos/form/contacto', [FormController::class, 'procesaFormularioContacto'])->name('procesa.datos.contacto.inicial');
+
+//rutas de plantel temporales
+Route::get("/izcalli",[UnimexController::class, 'redireccionPlantel'])->name('plantel');
+Route::get("/satelite",[UnimexController::class, 'redireccionPlantel'])->name('plantel');
+Route::get("/polanco",[UnimexController::class, 'redireccionPlantel'])->name('plantel');
+Route::get("/veracruz",[UnimexController::class, 'redireccionPlantel'])->name('plantel');
 
 //? variables de establecimiento para fomulario de contacto
 Route::get('/set/variables/contactForm/{elemento}', [ExtrasUnimexController::class, 'setVariablesFormContacto'])->name('set.variables.contactForm');

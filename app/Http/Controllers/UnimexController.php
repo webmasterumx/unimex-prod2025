@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF as PDF;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\URL;
 use Spatie\FlareClient\Api;
 
@@ -49,6 +50,35 @@ class UnimexController extends Controller
             "dataUTM" => $dataUTM,
             "urlVisitada" => $urlVisitada
         ]);
+    }
+
+    public function redireccionPlantel()
+    {
+
+        $urlTotal = FacadesRequest::url();
+
+        $arrayUrl = explode("/", $urlTotal);
+        $tamañoUrl = sizeof($arrayUrl);
+
+        $slug = $arrayUrl[$tamañoUrl - 1];
+
+        $this->utm_recurso = new UtmController();
+        $dataUTM = $this->utm_recurso->iniciarUtmSource();
+
+        $plantel = Plantel::where('nombre', $slug)->first();
+        if ($plantel != null) {
+            $galeria = json_decode($plantel->galeria);
+            $plantelesInNot = Plantel::where('nombre', '!=', $slug)->get();
+
+            return view('plantel', [
+                "plantel" => $plantel,
+                "galeria" => $galeria,
+                "plantelesInNot" => $plantelesInNot,
+                "dataUTM" => $dataUTM
+            ]);
+        } else {
+            return view('errors.404');
+        }
     }
 
     public function getPlanteles($slug): View
@@ -283,7 +313,7 @@ class UnimexController extends Controller
         $apiConsumoUnimex = new ApiConsumoUnimex();
         $listaRvoes = $apiConsumoUnimex->getRvoes();
 
-        return view('rvoes',["lista" => $listaRvoes]);
+        return view('rvoes', ["lista" => $listaRvoes]);
     }
 
     public function investigacion(): View
