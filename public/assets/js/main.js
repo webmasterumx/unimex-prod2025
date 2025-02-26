@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
+ /*  const glightbox = GLightbox({
     selector: '.glightbox'
-  });
+  }); */
 
   /**
    * Initiate pURE cOUNTER
