@@ -217,7 +217,7 @@
                                     <p class="card-text">
                                         <br>
                                     </p>
-                                    <a href="{{ env('APP_URL') . 'planteles/' . $plantel->titulo . $complemento }}"
+                                    <a href="{{ env('APP_URL') . 'planteles/' . $plantel->nombre . $complemento }}"
                                         class="btn btn-primary btn-arrow-go">Plantel {{ $plantel->titulo }} </a>
                                 </div>
                             </div>
