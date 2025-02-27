@@ -64,7 +64,7 @@ class TestVocacionalController extends Controller
         $periodo = $request->periodo;
         $carrera = $request->carrera;
         $horario = $request->horario;
-        $urlVisitada = $request->urlVisitada;
+        //$urlVisitada = $request->urlVisitada;
 
         $calificacion = $request->calificacion;
         $origen = 15;
@@ -82,12 +82,10 @@ class TestVocacionalController extends Controller
             } catch (\Throwable $th) {
                 //throw $th;
 
-                return false;
+                return true;
             }
         } else {
             // se agrega a crm y se manda correo
-
-            return 2;
 
             $valores = array(
                 "pNombre" => $nombre,
@@ -113,7 +111,8 @@ class TestVocacionalController extends Controller
 
             $respuesta = app(ApiConsumoController::class)->agregarProspectoCRM($valores);
 
-            if ($respuesta["FolioCRM"] == 0 || $respuesta["FolioCRM"] == '0') {
+
+            if ($respuesta["FolioCRM"] != 0 || $respuesta["FolioCRM"] != '0') {
 
                 try {
                     $envio = Mail::to($mail)->bcc("umrec_web@unimex.edu.mx")->send(new MailTestVocacional($nombre, $appat, $apmat, $calificacion));
@@ -122,7 +121,7 @@ class TestVocacionalController extends Controller
                 } catch (\Throwable $th) {
                     //throw $th;
 
-                    return false;
+                    return true; //verificar error
                 }
             } else {
 

@@ -45,6 +45,8 @@ Route::get('/forma/pago/preinscripcion/{folio}', [FormController::class, 'buscar
 Route::get('/bolsa-de-trabajo', [UnimexController::class, 'bolsaDeTrabajo'])->name('bolsa_de_trabajo');
 Route::get('/buscar/folleto/json/{id_empresa}/{clave_nivel}/{descrip_ofi}', [FolletoController::class, 'leerExcelFolletos'])->name('buscar.folleto.json');
 Route::get('/soyUNIMEX', [UnimexController::class, "redirigirBlog"]);
+Route::get('/soyunimex', [UnimexController::class, "redirigirBlog"]);
+Route::get('/soyUnimex', [UnimexController::class, "redirigirBlog"]);
 Route::view('/opciones-de-titulacion', 'opciones_titulacion')->name('opciones_de_titulacion');
 Route::view('/examen-de-conocimientos', 'examen_de_conocimientos')->name('examen_de_conocimientos');
 Route::view('/resutados-examen', 'resultadosExamenConocimientos')->name('resultados_examen_conocimientos');
@@ -125,11 +127,14 @@ Route::post("/proyeccion-profesional/registro", [ProyeccionProfesionalController
 
 //* TestVocacional
 Route::get("/TestVocacional", [TestVocacionalController::class, 'index'])->name('test.vocacional.index');
+Route::get("/testvocacional", [TestVocacionalController::class, 'index'])->name('test.vocacional.index');
 Route::post("/TestVocacional/establecer/datos", [TestVocacionalController::class, 'establecerDatosPersonales'])->name("test.vocacional.establecer.datos");
 Route::get("/TestVocacional/App", [TestVocacionalController::class, 'iniciarTest']);
 Route::view("/TestVocacional/App/hemisferio_a", "testVocacional.hemisferio_a");
 Route::view("/TestVocacional/App/hemisferio_b", "testVocacional.hemisferio_b");
 Route::post('/TestVocacional/terminar/registro', [TestVocacionalController::class, 'terminarRegistro'])->name('test.vocacional.terminar.registro');
+
+
 
 //!modulo de preinscripcion en linea
 Route::get('/App/Preinscripcion-online', [PreinscripcionEnLineaController::class, 'index'])->name('preinscripcion.linea');

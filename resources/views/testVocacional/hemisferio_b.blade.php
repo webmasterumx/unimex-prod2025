@@ -11,6 +11,7 @@
     <link async rel="stylesheet" href="{{ asset('assets/petry/prettify.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/style-personal.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -126,15 +127,26 @@
 
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
     <script defer src="{{ asset('assets/petry/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/petry/jquery.bootstrap.wizard.js') }}"></script>
     <script defer src="{{ asset('assets/petry/prettify.js') }}"></script>
+    <script defer src="{{ asset('assets/js/testVocacional/combos.js') }}"></script>
+
     <script>
+        function setUrlBase() {
+            let urlBase = "{{ env('APP_URL') }}";
+            return urlBase;
+        }
+
+
         $(document).ready(function() {
             $('#rootwizard').bootstrapWizard({});
         });
     </script>
+
+    <script src="{{ asset('assets/js/testVocacional/validar.js') }}"></script>
 </body>
 
 </html>

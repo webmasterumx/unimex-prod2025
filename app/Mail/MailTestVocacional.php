@@ -25,14 +25,11 @@ class MailTestVocacional extends Mailable
     public function __construct($nombre, $apellidoPaterno, $apellidoMaterno, $calificacion)
     {
 
-
-
         $this->nombre = $nombre;
         $this->apellidoPaterno = $apellidoPaterno;
         $this->apellidoMaterno = $apellidoMaterno;
         $this->calificacion = $calificacion;
 
-        var_dump($this->nombre);
     }
 
     /**
@@ -41,7 +38,7 @@ class MailTestVocacional extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Resultados Test Vocacional UNIMEX - 2024 - Tu hemisferio activo es el ' . $this->calificacion,
+            subject: 'Resultados Test Vocacional UNIMEX - 2025 - Tu hemisferio activo es el ' . $this->calificacion,
         );
     }
 
