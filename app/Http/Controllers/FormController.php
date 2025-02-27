@@ -196,7 +196,6 @@ class FormController extends Controller
             //? se intenta enviar el correo
             try {
                 $correos = [
-                    "umrec_cdbd@unimex.edu.mx",
                     "umrec_web@unimex.edu.mx"
                 ];
 
@@ -253,10 +252,9 @@ class FormController extends Controller
             "mensaje" => $request->mensaje_service
         );
 
-        $recive = "lishanxime201099@gmail.com";
         $correos = [
             "umrec_cdbd@unimex.edu.mx",
-            "lishanxime201099@gmail.com"
+            "umrec_gccsasist@unimex.edu.mx"
         ];
         $envio =  Mail::to($correos)->bcc("umrec_web@unimex.edu.mx")->send(new ServicioAlumno($valores));
 
@@ -278,10 +276,9 @@ class FormController extends Controller
 
         $file = $request->file('cv_trabaja');
 
-        $recive = "lishanxime201099@gmail.com";
         $correos = [
             "umrec_cdbd@unimex.edu.mx",
-            "lishanxime201099@gmail.com"
+            "reclutamiento@unimex.edu.mx"
         ];
         $envio =  Mail::to($correos)->bcc("umrec_web@unimex.edu.mx")->send(new TrabajaUnimex($valores, $file));
 
@@ -303,7 +300,8 @@ class FormController extends Controller
         $recive = "lishanxime201099@gmail.com";
         $correos = [
             "umrec_cdbd@unimex.edu.mx",
-            "lishanxime201099@gmail.com"
+            "francisco.montalvo@unimex.edu.mx",
+            "umrec_gccsasist@unimex.edu.mx"
         ];
         $envio = Mail::to($correos)->bcc("umrec_web@unimex.edu.mx")->send(new QuejasSugerencias($valores));
 
@@ -330,11 +328,10 @@ class FormController extends Controller
         {
             $asunto = "Empresas por Registrar en OCC";
         }
-
-        $recive = "lishanxime201099@gmail.com";
+        
         $correos = [
             "umrec_cdbd@unimex.edu.mx",
-            "lishanxime201099@gmail.com"
+            "vinculacion@unimex.edu.mx"
         ];
         $envio = Mail::to($correos)->bcc("umrec_web@unimex.edu.mx")->send(new EmpresasOcc($valores, $asunto));
 
