@@ -18,7 +18,7 @@
 
             </div>
             <div class="col-12 col-md-6 text-center">
-                <a target="_blank" class="link-dark" href="#">
+                <a target="_blank" class="link-dark" href="{{ asset('assets/pdf/PROTOCOL_ CONTRA_ACTOS_DE_VIOLENCIA_UNIMEX.pdf') }}">
                     <img src="{{ asset('assets/img/nav/reglamento.webp') }}" alt=""><br>
                     Protocolos UNIMEX<sup>®</sup>
                 </a>
